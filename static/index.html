@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>elas conectam mei | Painel MEI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="app">
+    <!-- ============ Menu lateral ============ -->
+    <aside class="sidebar">
+      <a href="#/painel" class="brand" aria-label="elas conectam mei, ir para o painel">
+        <svg width="146" height="44" viewBox="0 0 220 66" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="elas conectam mei">
+          <text x="2" y="27" fill="#ede4ff" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" letter-spacing="0.04em">ELAS</text>
+          <text x="2" y="55" fill="#ede4ff" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" letter-spacing="0.03em">CONECTAM</text>
+          <path d="M126 17C126 11.8 121.8 8 116.8 8C113.4 8 110.5 9.8 109 12.4C107.5 9.8 104.6 8 101.2 8C96.2 8 92 11.8 92 17C92 25.5 109 35 109 35C109 35 126 25.5 126 17Z" stroke="#c4b5fd" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="123.5" cy="11.5" r="3.8" fill="#c4b5fd"/>
+          <circle cx="109" cy="35" r="3.8" fill="#c4b5fd"/>
+        </svg>
+      </a>
+
+      <nav class="nav" aria-label="Seções do sistema">
+        <a class="nav-item" data-view="painel" href="#/painel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <span>Painel</span>
+        </a>
+        <a class="nav-item" data-view="notas" href="#/notas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+          <span>Notas fiscais</span>
+          <span class="nav-count" id="nav-notas-n" hidden></span>
+        </a>
+        <a class="nav-item" data-view="caixa" href="#/caixa">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7l12-3v3"/><circle cx="16.5" cy="14" r="1.2"/></svg>
+          <span>Caixa PF/PJ</span>
+          <span class="nav-count nav-alerta" id="nav-caixa-n" hidden></span>
+        </a>
+        <a class="nav-item" data-view="preco" href="#/preco">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.2"/></svg>
+          <span>Preço mínimo</span>
+        </a>
+        <a class="nav-item" data-view="teto" href="#/teto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/></svg>
+          <span>Simulador de teto</span>
+        </a>
+        <a class="nav-item" data-view="agente" href="#/agente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.5A8 8 0 1 1 21 12z"/></svg>
+          <span>Agente Elas</span>
+        </a>
+        <a class="nav-item" data-view="apoio" href="#/apoio">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <span>Apoio e trilhas</span>
+        </a>
+      </nav>
+
+      <div class="side-foot">
+        <p class="modo" id="badge-modo">Carregando...</p>
+        <button type="button" class="btn-side" id="btn-nova-sessao">Nova sessão</button>
+        <p class="privacidade">Seus dados ficam só na memória desta sessão. Nada é gravado em disco.</p>
+      </div>
+    </aside>
+
+    <!-- ============ Área principal ============ -->
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-titulo">
+          <h1 id="titulo">Painel</h1>
+          <p class="muted" id="subtitulo"></p>
+        </div>
+        <div class="topbar-acoes">
+          <span class="chip chip-lilac" id="badge-ano">MEI 2026</span>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-exemplo">Carregar dados de exemplo</button>
+        </div>
+      </header>
+
+      <main class="content" id="conteudo" tabindex="-1">
+
+        <!-- ========== PAINEL ========== -->
+        <section class="view" id="v-painel">
+          <div class="panel vazio-grande" id="painel-vazio">
+            <h2>Comece pelas suas notas fiscais</h2>
+            <p>Envie os XMLs das notas ou uma planilha. Eu somo mês a mês e mostro se o faturamento deve bater o teto de R$ 81.000 neste ano.</p>
+            <div class="acoes">
+              <a class="btn btn-primary" href="#/notas">Enviar notas</a>
+              <button type="button" class="btn btn-secondary" data-acao="exemplo">Usar dados de exemplo da Marina</button>
+            </div>
+          </div>
+
+          <div id="painel-dados" hidden>
+            <div class="banner" id="banner" role="status">
+              <strong id="banner-titulo"></strong>
+              <span id="banner-texto"></span>
+            </div>
+
+            <div class="kpis">
+              <div class="kpi">
+                <span class="kpi-rotulo">Faturado nas notas</span>
+                <strong class="kpi-valor" id="kpi-faturado"></strong>
+                <span class="kpi-sub" id="kpi-faturado-sub"></span>
+              </div>
+              <div class="kpi">
+                <span class="kpi-rotulo">Ainda cabe no teto</span>
+                <strong class="kpi-valor" id="kpi-margem"></strong>
+                <span class="kpi-sub" id="kpi-margem-sub"></span>
+              </div>
+              <div class="kpi">
+                <span class="kpi-rotulo">Do limite já usado</span>
+                <strong class="kpi-valor" id="kpi-pct"></strong>
+                <div class="barra"><div class="barra-cheia" id="barra-pct"></div></div>
+              </div>
+              <div class="kpi">
+                <span class="kpi-rotulo" id="kpi-prev-rotulo"></span>
+                <strong class="kpi-valor" id="kpi-prev"></strong>
+                <span class="kpi-sub" id="kpi-prev-sub"></span>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <section class="panel" aria-labelledby="t-grafico">
+                <div class="panel-head">
+                  <h2 id="t-grafico">Faturamento acumulado</h2>
+                  <label class="inline">Meses fechados até
+                    <select id="mes-select"></select>
+                  </label>
+                </div>
+                <p class="dica">Se o mês ainda não acabou, escolha o anterior. A projeção fica mais fiel.</p>
+                <figure class="grafico">
+                  <svg id="grafico" viewBox="0 0 680 300" role="img" aria-labelledby="grafico-legenda"></svg>
+                  <figcaption class="so-leitor" id="grafico-legenda">Faturamento acumulado mês a mês, com a projeção até dezembro, o teto e o limite de 20% acima.</figcaption>
+                  <ul class="legenda" id="legenda"></ul>
+                </figure>
+                <div class="tabela-wrap sem-limite">
+                  <table class="tabela cenarios">
+                    <caption>O que acontece em cada ritmo</caption>
+                    <thead><tr><th scope="col">Se você mantiver</th><th scope="col" class="num">Por mês</th><th scope="col" class="num">Fecha o ano com</th><th scope="col">Teto</th></tr></thead>
+                    <tbody id="cenarios"></tbody>
+                  </table>
+                </div>
+                <details class="premissas"><summary>Como calculei</summary><ul id="premissas"></ul></details>
+              </section>
+
+              <div class="coluna">
+                <section class="panel" aria-labelledby="t-passos">
+                  <h2 id="t-passos">Próximos passos</h2>
+                  <ul class="passos" id="passos"></ul>
+                </section>
+                <section class="panel" aria-labelledby="t-ultimas">
+                  <div class="panel-head">
+                    <h2 id="t-ultimas">Últimas notas</h2>
+                    <a class="link" href="#/notas">Ver todas</a>
+                  </div>
+                  <table class="tabela compacta">
+                    <thead><tr><th scope="col">Data</th><th scope="col">Descrição</th><th scope="col" class="num">Valor</th></tr></thead>
+                    <tbody id="ultimas"></tbody>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== NOTAS ========== -->
+        <section class="view" id="v-notas" hidden>
+          <div class="grid-2 notas-grid">
+            <section class="panel" aria-labelledby="t-notas">
+              <h2 class="so-leitor" id="t-notas">Notas e receitas</h2>
+
+              <label class="dropzone" id="dropzone" for="file-input">
+                <input id="file-input" type="file" accept=".xml,.csv,.txt" multiple class="so-leitor" />
+                <strong>Enviar arquivos</strong>
+                <span>XML de NF-e ou NFS-e, ou planilha CSV. Arraste aqui ou clique para escolher vários.</span>
+              </label>
+
+              <ul class="avisos" id="avisos-notas" hidden></ul>
+
+              <div class="toolbar">
+                <label class="so-leitor" for="busca-notas">Buscar nota</label>
+                <input type="search" id="busca-notas" placeholder="Buscar nota" autocomplete="off" />
+                <label class="so-leitor" for="filtro-mes">Filtrar por mês</label>
+                <select id="filtro-mes"><option value="">Todos os meses</option></select>
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-manual">Receita sem nota</button>
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-limpar-notas" hidden>Limpar notas</button>
+              </div>
+
+              <form class="form-linha" id="manual-form" hidden>
+                <label>Data <input id="manual-data" type="date" required /></label>
+                <label>Valor (R$) <input id="manual-valor" type="text" inputmode="decimal" placeholder="350,00" required /></label>
+                <label class="cresce">Descrição <input id="manual-desc" type="text" maxlength="60" placeholder="Ex.: atendimento cliente Ana" /></label>
+                <button type="submit" class="btn btn-primary btn-sm">Salvar receita</button>
+              </form>
+
+              <div class="tabela-wrap">
+                <table class="tabela" id="tabela-notas" hidden>
+                  <caption class="so-leitor">Notas e receitas enviadas</caption>
+                  <thead><tr><th scope="col">Data</th><th scope="col">Descrição</th><th scope="col">Origem</th><th scope="col" class="num">Valor</th><th scope="col"><span class="so-leitor">Remover</span></th></tr></thead>
+                  <tbody id="notas-corpo"></tbody>
+                </table>
+              </div>
+              <p class="vazio" id="notas-vazio">Nenhuma nota ainda. Envie seus arquivos ou carregue os dados de exemplo para ver como funciona.</p>
+              <p class="muted" id="notas-contagem"></p>
+            </section>
+
+            <section class="panel" aria-labelledby="t-meses">
+              <h2 id="t-meses">Faturamento por mês</h2>
+              <div class="barras" id="barras" role="img" aria-label="Faturamento de cada mês, somado das notas"></div>
+              <p class="muted" id="barras-legenda">Envie notas para ver o ritmo de cada mês.</p>
+            </section>
+          </div>
+        </section>
+
+        <!-- ========== CAIXA ========== -->
+        <section class="view" id="v-caixa" hidden>
+          <div class="kpis" id="caixa-kpis">
+            <div class="kpi"><span class="kpi-rotulo">Saldo do negócio</span><strong class="kpi-valor" id="cx-saldo">R$ 0,00</strong></div>
+            <div class="kpi"><span class="kpi-rotulo">Entradas do negócio</span><strong class="kpi-valor" id="cx-entradas">R$ 0,00</strong></div>
+            <div class="kpi"><span class="kpi-rotulo">Saídas do negócio</span><strong class="kpi-valor" id="cx-saidas">R$ 0,00</strong></div>
+            <div class="kpi"><span class="kpi-rotulo">Dinheiro na conta errada</span><strong class="kpi-valor" id="cx-mistura">R$ 0,00</strong><span class="kpi-sub" id="cx-mistura-sub"></span></div>
+          </div>
+
+          <div class="grid-2 caixa-grid">
+            <section class="panel" aria-labelledby="t-lanc">
+              <h2 id="t-lanc">Novo lançamento</h2>
+              <form class="form-coluna" id="caixa-form">
+                <fieldset class="seg" aria-label="Tipo do lançamento">
+                  <input type="radio" name="cx-tipo" id="cx-tipo-entrada" value="entrada" checked /><label for="cx-tipo-entrada">Entrada</label>
+                  <input type="radio" name="cx-tipo" id="cx-tipo-saida" value="saida" /><label for="cx-tipo-saida">Saída</label>
+                </fieldset>
+                <label class="campo">Valor (R$)
+                  <input id="cx-valor" type="text" inputmode="decimal" placeholder="800,00" required />
+                </label>
+                <div class="linha-2">
+                  <label class="campo">Em qual conta passou
+                    <select id="cx-conta"><option value="PJ">Negócio (PJ)</option><option value="PF">Pessoal (PF)</option></select>
+                  </label>
+                  <label class="campo">A quem pertence
+                    <select id="cx-natureza"><option value="negocio">Ao negócio</option><option value="pessoal">A mim</option></select>
+                  </label>
+                </div>
+                <label class="campo">Descrição
+                  <input id="cx-desc" type="text" maxlength="60" placeholder="Ex.: cliente Bia, mercado, licença" />
+                </label>
+                <button type="submit" class="btn btn-primary">Registrar lançamento</button>
+                <p class="dica">Fica "misturado" quando dinheiro do negócio passa pela conta pessoal, ou quando um gasto pessoal sai da conta do negócio. Sem julgamento: é só para você enxergar.</p>
+              </form>
+            </section>
+
+            <section class="panel" aria-labelledby="t-hist">
+              <div class="panel-head">
+                <h2 id="t-hist">Lançamentos</h2>
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-caixa-limpar" hidden>Limpar caixa</button>
+              </div>
+              <div class="tabela-wrap">
+                <table class="tabela" id="tabela-caixa" hidden>
+                  <caption class="so-leitor">Lançamentos do caixa</caption>
+                  <thead><tr><th scope="col">Tipo</th><th scope="col">Descrição</th><th scope="col">Conta</th><th scope="col">Pertence</th><th scope="col" class="num">Valor</th><th scope="col"><span class="so-leitor">Remover</span></th></tr></thead>
+                  <tbody id="caixa-corpo"></tbody>
+                </table>
+              </div>
+              <p class="vazio" id="caixa-vazio">Nenhum lançamento. Registre ao lado ou carregue os dados de exemplo.</p>
+            </section>
+          </div>
+        </section>
+
+        <!-- ========== PREÇO ========== -->
+        <section class="view" id="v-preco" hidden>
+          <div class="grid-2 preco-grid">
+            <section class="panel" aria-labelledby="t-preco-form">
+              <h2 id="t-preco-form">Calcule em 3 passos</h2>
+              <form class="form-coluna" id="preco-form" novalidate>
+                <fieldset>
+                  <legend>1. Custos</legend>
+                  <label class="campo">Custos fixos por mês (R$)
+                    <input id="p-fixos" type="text" inputmode="decimal" placeholder="500,00" />
+                    <span class="ajuda">Internet, softwares, espaço de trabalho.</span>
+                  </label>
+                  <label class="campo">Custo de cada serviço (R$)
+                    <input id="p-var" type="text" inputmode="decimal" placeholder="0,00" />
+                    <span class="ajuda">Material, taxas e frete de cada entrega. Opcional.</span>
+                  </label>
+                </fieldset>
+                <fieldset>
+                  <legend>2. Sua retirada e seu ritmo</legend>
+                  <label class="campo">Quanto quer retirar por mês (R$)
+                    <input id="p-pro" type="text" inputmode="decimal" placeholder="3.000,00" />
+                    <span class="ajuda">É o seu pró-labore: o que fica para você.</span>
+                  </label>
+                  <label class="campo">Serviços que consegue fazer por mês
+                    <input id="p-qtd" type="text" inputmode="numeric" placeholder="10" />
+                  </label>
+                </fieldset>
+                <fieldset>
+                  <legend>3. Ajustes</legend>
+                  <div class="linha-2">
+                    <label class="campo">Tipo de atividade
+                      <select id="p-tipo"><option value="servicos">Serviços</option><option value="comercio">Comércio</option><option value="misto">Comércio e serviços</option></select>
+                    </label>
+                    <label class="campo">Folga de segurança (%)
+                      <input id="p-margem" type="text" inputmode="decimal" value="10" />
+                    </label>
+                  </div>
+                </fieldset>
+              </form>
+            </section>
+
+            <section class="panel" aria-labelledby="t-preco-res" aria-live="polite">
+              <h2 id="t-preco-res">Seu preço por serviço</h2>
+              <p class="vazio" id="preco-vazio">Preencha custos fixos, retirada e quantidade de serviços. O resultado aparece aqui na hora.</p>
+              <div id="preco-res" hidden>
+                <div class="preco-destaque">
+                  <span class="kpi-rotulo">Preço mínimo</span>
+                  <strong id="pr-minimo"></strong>
+                  <span class="kpi-sub">Abaixo disso você trabalha no prejuízo.</span>
+                </div>
+                <p class="preco-sugerido">Sugerido, com folga: <strong id="pr-sugerido"></strong></p>
+                <div class="empilhada" id="pr-barra" role="img" aria-label="Composição do preço"></div>
+                <table class="tabela compacta">
+                  <caption>De onde vem o preço</caption>
+                  <tbody id="pr-comp"></tbody>
+                </table>
+                <ul class="premissas-lista" id="pr-prem"></ul>
+              </div>
+              <p class="erro-campo" id="preco-erro" hidden></p>
+            </section>
+          </div>
+        </section>
+
+        <!-- ========== SIMULADOR DE TETO ========== -->
+        <section class="view" id="v-teto" hidden>
+          <div class="aviso-legal">Simulação de planejamento. Os valores são estimativas e não substituem um contador. Confirme no Portal do Empreendedor.</div>
+          <div class="grid-2 preco-grid">
+            <section class="panel" aria-labelledby="t-sim-form">
+              <h2 id="t-sim-form">E se eu passar do teto?</h2>
+              <form class="form-coluna" id="sim-form" novalidate>
+                <label class="campo">Faturamento total do ano (R$)
+                  <input id="s-total" type="text" inputmode="decimal" placeholder="90.000,00" />
+                </label>
+                <div class="usar-proj" id="usar-proj" hidden>
+                  <span class="ajuda">Usar a projeção das suas notas:</span>
+                  <div class="acoes" id="usar-proj-botoes"></div>
+                </div>
+                <div class="linha-2">
+                  <label class="campo">Tipo de atividade
+                    <select id="s-tipo"><option value="servicos">Serviços</option><option value="comercio">Comércio</option><option value="misto">Comércio e serviços</option></select>
+                  </label>
+                  <label class="campo">Alíquota estimada (%)
+                    <input id="s-aliq" type="text" inputmode="decimal" value="6" />
+                    <span class="ajuda">Depende da atividade e do fator R.</span>
+                  </label>
+                </div>
+                <label class="campo">Mês de abertura (se abriu o MEI neste ano)
+                  <select id="s-abertura"><option value="">Já era MEI o ano todo</option></select>
+                </label>
+                <button type="submit" class="btn btn-primary">Simular</button>
+              </form>
+            </section>
+
+            <section class="panel" aria-labelledby="t-sim-res" aria-live="polite">
+              <h2 id="t-sim-res">O que acontece</h2>
+              <p class="vazio" id="sim-vazio">Informe o faturamento do ano e toque em Simular.</p>
+              <div id="sim-res" hidden>
+                <span class="chip" id="sim-faixa"></span>
+                <p class="sim-texto" id="sim-texto"></p>
+                <dl class="resumo-dl">
+                  <div><dt>Limite do ano</dt><dd id="sim-limite"></dd></div>
+                  <div><dt>Passou do limite em</dt><dd id="sim-excesso"></dd></div>
+                  <div><dt>Imposto estimado</dt><dd id="sim-imposto"></dd></div>
+                </dl>
+                <ul class="premissas-lista" id="sim-prem"></ul>
+              </div>
+              <p class="erro-campo" id="sim-erro" hidden></p>
+            </section>
+          </div>
+        </section>
+
+        <!-- ========== AGENTE ========== -->
+        <section class="view" id="v-agente" hidden>
+          <div class="agente-grid">
+            <aside class="panel perguntas" aria-labelledby="t-rapidas">
+              <h2 id="t-rapidas">Perguntas rápidas</h2>
+              <div class="lista-botoes">
+                <button type="button" class="pergunta" data-prompt="Vou bater o teto se eu continuar assim?">Vou bater o teto se eu continuar assim?</button>
+                <button type="button" class="pergunta" data-prompt="Faturei 52 mil até junho e fiquei com medo de estourar o teto. Pode simular o que acontece?">Faturei 52 mil até junho. E agora?</button>
+                <button type="button" class="pergunta" data-prompt="Recebi 800 do cliente Bia na minha conta pessoal">Recebi 800 na conta pessoal</button>
+                <button type="button" class="pergunta" data-prompt="Qual o resumo do meu caixa?">Resumo do meu caixa</button>
+                <button type="button" class="pergunta" data-prompt="Quero saber quanto cobrar: custos 500, retirar 3000, 10 serviços">Quanto devo cobrar?</button>
+                <button type="button" class="pergunta" data-prompt="Estou cansada e me sinto sozinha nisso tudo">Estou cansada e me sinto sozinha</button>
+              </div>
+            </aside>
+
+            <section class="panel chat" aria-labelledby="t-chat">
+              <div class="panel-head">
+                <div>
+                  <h2 id="t-chat">Agente Elas</h2>
+                  <p class="muted">Finanças PF/PJ, preço, teto MEI e rotina. Os números vêm sempre do motor de cálculo.</p>
+                </div>
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-limpar-chat">Limpar conversa</button>
+              </div>
+              <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
+              <form class="chat-form" id="chat-form">
+                <label for="chat-input" class="so-leitor">Sua mensagem</label>
+                <textarea id="chat-input" rows="2" maxlength="2000" placeholder="Escreva do seu jeito. Ex.: faturei 45 mil até agosto, quanto ainda cabe no teto?" required></textarea>
+                <button type="submit" class="btn btn-primary" id="chat-send">Enviar</button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <!-- ========== APOIO ========== -->
+        <section class="view" id="v-apoio" hidden>
+          <div class="grid-apoio">
+            <section class="panel" aria-labelledby="t-trilhas">
+              <h2 id="t-trilhas">Trilhas rápidas</h2>
+              <p class="muted">Escolha um tema e o Agente abre já com o contexto certo.</p>
+              <ul class="lista-linhas">
+                <li><div><strong>Finanças sem mistura</strong><span>Separe PF e PJ e crie uma rotina financeira possível.</span></div><button type="button" class="btn btn-secondary btn-sm" data-prompt="Quero organizar minhas finanças sem misturar PF e PJ. Por onde começo?">Perguntar ao Agente</button></li>
+                <li><div><strong>Preço que sustenta</strong><span>Custos fixos, pró-labore e DAS para um preço mínimo saudável.</span></div><a class="btn btn-secondary btn-sm" href="#/preco">Abrir calculadora</a></li>
+                <li><div><strong>Meu MEI está crescendo</strong><span>Entenda o teto anual, a regra dos 20% e os próximos passos sem susto.</span></div><a class="btn btn-secondary btn-sm" href="#/teto">Abrir simulador</a></li>
+                <li><div><strong>Semana possível</strong><span>Priorize o que move o negócio quando tempo, casa e energia estão curtos.</span></div><button type="button" class="btn btn-secondary btn-sm" data-prompt="Estou sobrecarregada conciliando casa e trabalho como MEI.">Perguntar ao Agente</button></li>
+              </ul>
+            </section>
+
+            <section class="panel" aria-labelledby="t-rodas">
+              <h2 id="t-rodas">Rodas de conversa</h2>
+              <p class="muted">Uma dúvida fica mais leve quando é compartilhada.</p>
+              <ul class="lista-linhas">
+                <li><div><strong>Primeiros anos e precificação</strong><span>Valide seu preço e ganhe confiança nas primeiras decisões.</span></div><button type="button" class="btn btn-secondary btn-sm" data-prompt="Estou nos primeiros anos do MEI e quero validar meu preço.">Explorar</button></li>
+                <li><div><strong>Dupla jornada e sobrecarga</strong><span>Ideias possíveis para conciliar trabalho, casa e cuidados.</span></div><button type="button" class="btn btn-secondary btn-sm" data-prompt="Estou cansada da dupla jornada e me sinto isolada empreendendo.">Explorar</button></li>
+                <li><div><strong>Vendas e divulgação</strong><span>Organize as entradas de vendas na conta do negócio.</span></div><button type="button" class="btn btn-secondary btn-sm" data-prompt="Como organizar minhas entradas de vendas na conta PJ?">Explorar</button></li>
+                <li><div><strong>Crescendo além do MEI</strong><span>Prepare-se para uma possível migração para ME.</span></div><a class="btn btn-secondary btn-sm" href="#/teto">Abrir simulador</a></li>
+              </ul>
+            </section>
+
+            <section class="panel panel-larga" aria-labelledby="t-rede">
+              <h2 id="t-rede">Rede de apoio sugerida</h2>
+              <p class="muted">Curadoria do projeto. O Agente só indica itens desta lista.</p>
+              <ul class="lista-linhas">
+                <li><div><strong>Sebrae Delas</strong><span>Programa do Sebrae para mulheres empreendedoras, com conteúdos e encontros de troca.</span></div></li>
+                <li><div><strong>Rede Mulher Empreendedora</strong><span>Rede e comunidade de mulheres que empreendem, com eventos e conteúdo.</span></div></li>
+                <li><div><strong>Portal do Empreendedor (gov.br)</strong><span>Canal oficial para emitir o DAS, fazer a declaração anual e comunicar desenquadramento.</span></div></li>
+                <li><div><strong>Atendimento do Sebrae</strong><span>Orientação gratuita sobre MEI.</span></div></li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <noscript><p class="sem-js">Este sistema precisa de JavaScript para funcionar.</p></noscript>
+  <script src="/app.js"></script>
+</body>
+</html>

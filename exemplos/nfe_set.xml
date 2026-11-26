@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe"><NFe><infNFe Id="NFe35260900000000000000550010000000011000000011">
+<ide><nNF>11</nNF><dhEmi>2026-09-17T14:30:00-03:00</dhEmi></ide>
+<dest><xNome>Cliente Exemplo D</xNome></dest>
+<total><ICMSTot><vNF>8600.00</vNF></ICMSTot></total></infNFe></NFe></nfeProc>

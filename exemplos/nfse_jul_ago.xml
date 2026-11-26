@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConsultarLoteRpsResposta xmlns="http://www.abrasf.org.br/nfse.xsd"><ListaNfse><CompNfse><Nfse><InfNfse><Numero>101</Numero><DataEmissao>2026-07-09T10:00:00</DataEmissao>
+<Servico><Valores><ValorServicos>4500.00</ValorServicos><ValorLiquidoNfse>4410.00</ValorLiquidoNfse></Valores>
+<Discriminacao>Serviço de design gráfico</Discriminacao></Servico>
+<TomadorServico><RazaoSocial>Cliente Exemplo A</RazaoSocial></TomadorServico></InfNfse></Nfse></CompNfse><CompNfse><Nfse><InfNfse><Numero>102</Numero><DataEmissao>2026-07-28T10:00:00</DataEmissao>
+<Servico><Valores><ValorServicos>3300.00</ValorServicos><ValorLiquidoNfse>3234.00</ValorLiquidoNfse></Valores>
+<Discriminacao>Serviço de design gráfico</Discriminacao></Servico>
+<TomadorServico><RazaoSocial>Cliente Exemplo B</RazaoSocial></TomadorServico></InfNfse></Nfse></CompNfse><CompNfse><Nfse><InfNfse><Numero>103</Numero><DataEmissao>2026-08-14T10:00:00</DataEmissao>
+<Servico><Valores><ValorServicos>8200.00</ValorServicos><ValorLiquidoNfse>8036.00</ValorLiquidoNfse></Valores>
+<Discriminacao>Serviço de design gráfico</Discriminacao></Servico>
+<TomadorServico><RazaoSocial>Cliente Exemplo C</RazaoSocial></TomadorServico></InfNfse></Nfse></CompNfse></ListaNfse></ConsultarLoteRpsResposta>

@@ -1430,7 +1430,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def criar_servidor(porta: int = 8000) -> ThreadingHTTPServer:
-    return ThreadingHTTPServer(("127.0.0.1", porta), Handler)
+    return ThreadingHTTPServer(("0.0.0.0", porta), Handler)
 
 
 def rodar_cli(offline: bool = False, roteiro: bool = False) -> None:
@@ -1480,7 +1480,11 @@ def main(argv: list[str]) -> None:
         rodar_cli(offline="--offline" in argv, roteiro=False)
         return
 
-    porta = int(argv[argv.index("--porta") + 1]) if "--porta" in argv else 8000
+    porta = (
+    int(argv[argv.index("--porta") + 1])
+    if "--porta" in argv
+    else int(os.environ.get("PORT", 8000))
+    )
     srv = criar_servidor(porta)
     print(f"Copiloto MEI em http://127.0.0.1:{porta}  (modo: {modo()})  Ctrl+C para sair")
     try:
